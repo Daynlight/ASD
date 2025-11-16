@@ -20,6 +20,7 @@ public:
 
   void vectorGet();
   void vectorSet();
+  void vectorPop();
   
   void vectorEmplaceBack();
 };
@@ -45,6 +46,7 @@ inline bool Vector::runAll(){
   vectorGet();
   vectorSet();
   vectorEmplaceBack();
+  vectorPop();
 
   return assert.results("Vector");
 };
@@ -199,6 +201,29 @@ inline void Vector::vectorSet() {
     vector_get(&vec, (char*)&a, i);
     assert.equal("Vector::vectorSet", a, 20 - i);
   };
+
+  vector_destroy(&vec);
+};
+
+
+
+
+
+
+
+inline void Vector::vectorPop() {
+  struct vector vec;
+  vector_init(&vec, sizeof(int));
+
+  for(int i = 0; i < 20; i++)
+    vector_emplace_back(&vec, (char*)&i);
+  
+  
+
+  int a = 0;
+  vector_pop(&vec, (char*)&a);
+  assert.equal("Vector::vectorPop data", a, 19);
+  assert.equal("Vector::vectorPop size", vec.size, 19);
 
   vector_destroy(&vec);
 };

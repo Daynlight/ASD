@@ -71,6 +71,14 @@ void vector_emplace_back(struct vector *vector, char *data){
 
 
 
+void vector_pop(struct vector* vector, char* out){
+  vector_get(vector, out, vector->size - 1);
+  vector->size--;
+};
+
+
+
+
 
 void vector_get(struct vector* vector, char* out, unsigned int index){
   if(index >= vector->size) {

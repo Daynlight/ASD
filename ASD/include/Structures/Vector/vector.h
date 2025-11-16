@@ -56,6 +56,7 @@ void vector_resize(struct vector* vector);
 void vector_reserve(struct vector* vector, unsigned int cap);
 
 void vector_emplace_back(struct vector* vector, char* data);
+void vector_pop(struct vector* vector, char* out);
 
 void vector_get(struct vector* vector, char* out, unsigned int index);
 void vector_set(struct vector* vector, char* data, unsigned int index);
